@@ -9,9 +9,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../bower_components/paper-card/paper-card.html">
-<link rel="import" href="../bower_components/paper-input/paper-input.html">
-<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/node-generator/node-generator.html">
+
 <script src="../model/Node.js"></script>
 <link rel="import" href="shared-styles.html">
 
@@ -20,73 +19,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-styles">
       :host {
         display: block;
-
-        padding: 10px;
-      }
-      h2,p,h3 {
-        color: black;
-      }
-      paper-card {
-        padding: 10px;
-        width: 500px;
-      }
-      div#container-cards{
-        display: flex;
-        justify-content: center;
-      }
-      strong {
-        font-size: 25px;
-        color: white;
-      }
-      paper-button#plus {
-        background-color: #66bb6a;
-
-      }
-      paper-button#minor {
-        background-color: #ffee58;
-      }
-      paper-button.addOrRemove {
-        width: auto;
-        height: 10px;
-      }
-      div.options {
-        display: flex;
-        justify-content: space-around;
-      }
-      paper-input.option-button {
-        padding: 5px;
-      }
-      paper-button.addOrRemoveNode {
-        color: white;
-        margin-top: 20px;
       }
     </style>
 
     <div class="card">
-      <h1>Crea tu Chat-bot</h1>
-      <p>Ea duis bonorum nec, falli paulo aliquid ei eum.</p>
-      <p>Id nam odio natum malorum, tibique copiosae expetenda mel ea.Detracto suavitate repudiandae no eum. Id adhuc minim soluta nam.Id nam odio natum malorum, tibique copiosae expetenda mel ea.</p>
-
-      <div id="container-cards">
-        <paper-card id="card">
-            <paper-input label="Texto del chatbot" value="{{question}}"></paper-input>
-            <p>Aquí iran las opciones a elegir para el usuario</p>
-            <paper-button id="plus" class="addOrRemove" on-tap="addOption"><strong>+</strong></paper-button>
-            <paper-button id="minor" class="addOrRemove" on-tap="removeOption"><strong>-</strong></paper-button>
-            <dom-repeat items="[[options]]" as="option">
-              <template>
-                <div class="options">
-                  <paper-input id="buttonNode" label="Botón" class="option-button" value={{button}}></paper-input>
-                  <paper-input id="optionNewNode" label="Siguiente Nodo" class="option-button" value={{optionNewNode}}></paper-input>
-                  <paper-button on-tap="saveOp">Guardar opción</paper-button>
-                </div>
-              </template>
-            </dom-repeat>
-          </paper-card>
-      </div>
-      <paper-button id="plus" class="addOrRemoveNode" on-tap="addCard">Agerar Nodo</paper-button>
-      <paper-button id="minor" class="addOrRemoveNode" on-tap="removeNode">Quitar Nodo</paper-button>
+      <h1>Crea tu chat-bot</h1>
+      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
+      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+      <node-generator></node-generator>
     </div>
+    
   </template>
 
   <script>
@@ -94,77 +36,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       static get is() { return 'my-view2'; }
       static get properties(){
         return {
-          editingNode:{
-            type: new Polymer.Node()
-          },
-          nodes: {
-            type: Array,
-            value: []
-          },
-          options: {
-            type: Array,
-            value: [1]
-          },
-          contNode: {
-            type: Number,
-            value: 0
-          },
-          contOp: {
-            type: Number,
-            value: 0
-          },
-          button:{
-            type: String,
-            value: ''
-          },
-          optionNewNode: {
-            type: String,
-            value: ''
-          },
-          question: {
-            type: String,
-            value: ''
-          }
-        }
-      }
-
-      ready(){
-        super.ready();
-        const node1 = [new Polymer.Node()];
-        this.nodes = [...this.nodes, ...node1]
-      }
-
-      saveOp(){
-        const node = new Polymer.Node();
-        const currentNode = this.nodes[this.contNode];
-        currentNode.options.set(this.button, node);
-      }
-
-      addNode(){
-        const node = this.nodes[this.contNode]
-        node.question = this.question;
-        this.nodes = [...this.nodes, ...node];
-        console.log(node);
-        this.set('contNode', this.contNode++);
-      }
-
-      removeNode(){
-        this.nodes.pop();
-        this.nodes = [...this.nodes]
-        if(this.contNode > 0){
-          this.set('contNode', this.contNode--);
-        }
-      }
-
-      addOption(){
-        this.shadowRoot.querySelector('#buttonNode').value = '';
-        this.shadowRoot.querySelector('#optionNewNode').value = '';
-      }
-      removeOption(){
-        this.options.pop();
-        this.options = [...this.options];
-        if(this.cont > 0){
-          this.set('contOp', this.contOp--);
+         
         }
       }
 
